@@ -253,7 +253,7 @@ void run(u32 magic, u32 multiboot_ptr) {
      * and potentially overwrites data stored by GRUB there as part of the multiblock
      * information structure which is required by the memory manager
      */
-    mm_init();
+    mm_init(multiboot_ptr);
     /*
      * Tell multiboot module that we now have a working 
      * kmalloc
