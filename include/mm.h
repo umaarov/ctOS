@@ -231,7 +231,7 @@ typedef struct {
 
 
 
-void mm_init();
+void mm_init(u32 info_block_ptr);
 void mm_init_heap();
 void mm_release_page_tables(u32 pid);
 void* kmalloc_aligned(u32 size, u32 alignment);

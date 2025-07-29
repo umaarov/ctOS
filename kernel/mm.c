@@ -364,7 +364,7 @@ static void locate_ramdisk() {
  * Parameters:
  * @info_block_ptr - address of multiboot information block
  */
-static void phys_mem_init() {
+static void phys_mem_init(u32 info_block_ptr) {
     int i;
     u32 j;
     /*
@@ -485,7 +485,7 @@ void (*mm_put_phys_page)(u32 page) = mm_put_phys_page_impl;
 static pte_t* mm_get_ptd_for_pid_impl(u32 pid) {
     return proc_ptd[pid];
 }
-pte_t* (*mm_get_ptd_for_pid)() = mm_get_ptd_for_pid_impl;
+pte_t* (*mm_get_ptd_for_pid)(u32 pid) = mm_get_ptd_for_pid_impl;
 
 
 /*
