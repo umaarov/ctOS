@@ -4,7 +4,7 @@ all: $(OBJ)
 	
 	
 %.o: %.c
-	$(CC) -o $@ $<
+	$(CC) $(CFLAGS) -o $@ -c $<
 		
 clean:
 	rm -f $(OBJ)
