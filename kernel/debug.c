@@ -804,7 +804,7 @@ static void print_locks() {
             PRINT("%w      %w        %s     %h   %x  %h", lock_info[i].task_waiting, lock_info[i].task_acquired,
                     (lock_info[i].lock_type == LOCK_TYPE_RW) ? "RW " : "SEM", lock_info[i].rw,
                     lock_info[i].lock_addr, lock_info[i].lock_status);
-            if (lock_info[i].file) {
+            if (lock_info[i].file[0]) {
                 PRINT("  %d@%s\n", lock_info[i].line, lock_info[i].file);
             }
             else {
@@ -878,7 +878,7 @@ void debug_main(ir_context_t* ir_context) {
             print_usage();
         }
         else if (0 == strncmp("regs", cmd, 4)) {
-            print_regs(ir_context);
+            print_regs();
         }
         else if (0 == strncmp("x", cmd, 1)) {
             dump_memory();
@@ -989,7 +989,7 @@ void debug_main(ir_context_t* ir_context) {
             acpi_print_madt();
         }
         else {
-            print_usage(line);
+            print_usage();
         }
     }
 }
