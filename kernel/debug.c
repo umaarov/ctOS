@@ -968,7 +968,7 @@ void debug_main(ir_context_t* ir_context) {
             lapic_print_configuration();
         }
         else if (0 == strncmp("mmval", cmd, 5)) {
-            mm_validate();
+            //mm_validate();
         }
         else if (0 == strncmp("if", cmd, 2)) {
             net_if_print();

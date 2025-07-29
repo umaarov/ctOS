@@ -257,7 +257,7 @@ u32 do_sbrk(u32 size);
 u32 mm_get_top_of_common_stack();
 int mm_validate_buffer(u32 buffer, u32 len, int read_write);
 int mm_handle_page_fault(ir_context_t* ir_context);
-int mm_validate(void* buffer, size_t len, int rw);
+int mm_validate(void);
 u32 mm_phys_mem();
 u32 mm_phys_mem_available();
 

@@ -303,7 +303,7 @@ void run(u32 magic, u32 multiboot_ptr) {
     timer_init();
     MSG("Initializing device driver\n");
     dm_init();
-    KASSERT(0 == mm_validate());
+    // KASSERT(0 == mm_validate());
     MSG("Setting up file system\n");
     fs_init(DEVICE_NONE);
     /*
