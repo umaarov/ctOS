@@ -128,6 +128,7 @@
  *                                     /bin/init
  */
 
+
 #include "debug.h"
 #include "vga.h"
 #include "console.h"
@@ -159,6 +160,9 @@
 #include "wq.h"
 #include "mptables.h"
 #include "acpi.h"
+#include "multiboot.h"
+
+// u32 multiboot_get_info_block_ptr(void);
 
 
 static int __errno = 0;
@@ -236,7 +240,8 @@ void run(u32 magic, u32 multiboot_ptr) {
     /*
      * Parse multiboot information
      */
-    multiboot_init(multiboot_ptr, magic);
+
+     multiboot_init(multiboot_ptr, magic);
     /*
      * Parse kernel command line
      */
@@ -253,7 +258,8 @@ void run(u32 magic, u32 multiboot_ptr) {
      * and potentially overwrites data stored by GRUB there as part of the multiblock
      * information structure which is required by the memory manager
      */
-    mm_init(multiboot_ptr);
+    u32 info_block_ptr = multiboot_ptr;
+    mm_init(info_block_ptr);
     /*
      * Tell multiboot module that we now have a working 
      * kmalloc

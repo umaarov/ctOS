@@ -60,7 +60,11 @@ static int vbe_startup_mode = -1;
  * @multiboot_info_ptr - a pointer to the multiboot information structure
  * @magic - the magic value stored in EAX by the boot loader
  */
+
+static u32 info_ptr = 0;
+
 void multiboot_init(u32 multiboot_info_ptr, u32 __magic) {
+    info_ptr = multiboot_info_ptr;
     if (__multiboot_stage != MB_STAGE_NOT_READY) {
         PANIC("Wrong multiboot stage\n");
     }
@@ -80,6 +84,9 @@ void multiboot_init(u32 multiboot_info_ptr, u32 __magic) {
     __multiboot_stage = MB_STAGE_EARLY;
 }
 
+u32 multiboot_get_info_block_ptr(void) {
+    return info_ptr;
+}
 
 /*
  * This function is called by the kernel mainline to indicate that

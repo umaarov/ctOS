@@ -225,5 +225,6 @@ int multiboot_locate_ramdisk(multiboot_ramdisk_info_block_t* multiboot_ramdisk_i
 void multiboot_clone();
 int multiboot_probe_video_mode(fb_desc_t* fb_desc);
 u32 multiboot_get_acpi_rsdp();
+u32 multiboot_get_info_block_ptr(void);
 
 #endif /* _MULTIBOOT_H_ */
